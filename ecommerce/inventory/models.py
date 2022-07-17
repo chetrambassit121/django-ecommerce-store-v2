@@ -4,8 +4,6 @@ from mptt.models import MPTTModel, TreeForeignKey, TreeManyToManyField
 
 
 class Category(MPTTModel):
-    pass
-
     """
     Inventory Category table implimented with MPTT
     """
@@ -24,7 +22,9 @@ class Category(MPTTModel):
         unique=False,
         blank=False,
         verbose_name=_("category safe URL"),
-        help_text=_("format: required, letters, numbers, underscore, or hyphens"),
+        help_text=_(
+            "format: required, letters, numbers, underscore, or hyphens"
+        ),
     )
     is_active = models.BooleanField(
         default=True,
@@ -71,7 +71,9 @@ class Product(models.Model):
         null=False,
         blank=False,
         verbose_name=_("product safe URL"),
-        help_text=_("format: required, letters, numbers, underscores or hyphens"),
+        help_text=_(
+            "format: required, letters, numbers, underscores or hyphens"
+        ),
     )
     name = models.CharField(
         max_length=255,

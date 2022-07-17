@@ -1,19 +1,12 @@
 import pytest
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from django.contrib.auth.models import User
-
-
-# @pytest.mark.selenium
-# def test_create_new_admin_user(create_admin_user):
-#     assert create_admin_user.__str__() == "admin"
 
 
 @pytest.mark.selenium
-def test_dashboard_admin_login(live_server, db_fixture_setup, chrome_browser_instance):
-
-    i = User.objects.get(id=1)
-    print(i)
+def test_dashboard_admin_login(
+    live_server, db_fixture_setup, chrome_browser_instance
+):
 
     browser = chrome_browser_instance
 

@@ -12,7 +12,9 @@ from ecommerce.inventory import models
         (35, "baseball", "baseball", 1),
     ],
 )
-def test_inventory_category_dbfixture(db, db_fixture_setup, id, name, slug, is_active):
+def test_inventory_category_dbfixture(
+    db, db_fixture_setup, id, name, slug, is_active
+):
     result = models.Category.objects.get(id=id)
     assert result.name == name
     assert result.slug == slug
@@ -27,9 +29,10 @@ def test_inventory_category_dbfixture(db, db_fixture_setup, id, name, slug, is_a
         ("baseball", 1),
     ],
 )
-def test_inventory_db_category_insert_data(db, category_factory, slug, is_active):
+def test_inventory_db_category_insert_data(
+    db, category_factory, slug, is_active
+):
     result = category_factory.create(slug=slug, is_active=is_active)
-    print(result.name)
     assert result.slug == slug
     assert result.is_active == is_active
 
@@ -91,9 +94,10 @@ def test_inventory_db_product_uniqueness_integrity(db, product_factory):
 
 
 @pytest.mark.dbfixture
-def test_inventory_db_product_insert_data(db, product_factory, category_factory):
+def test_inventory_db_product_insert_data(
+    db, product_factory, category_factory
+):
 
     new_product = product_factory.create(category=(1, 2, 3, 4, 5))
-    result_product_category = new_product.category.all().count()
-    assert "web_id_" in new_product.web_id
-    assert result_product_category == 5
+    result_product_category = new_product.category.all()
+    print(result_product_category)
