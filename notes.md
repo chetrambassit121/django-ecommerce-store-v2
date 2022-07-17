@@ -25,6 +25,12 @@ from django.contrib.auth.hashers import make_password
 make_password('password')
 ```
 
+## dump data
+```
+py manage.py dumpdata inventory.catagory > new.json
+py manage.py dumpdata inventory.category --indent 4 > new.json
+```
+
 ## Load fixture
 ```
 manage.py loaddata xyz.json
